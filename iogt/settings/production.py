@@ -1,4 +1,5 @@
 from .base import *
+import os
 
 
 # Disable debug mode
@@ -54,6 +55,14 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'molo.core.backends.MoloCASBackend',
 )
+
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME', None)  # noqa: F405
+AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY', None)  # noqa: F405
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER', None)  # noqa: F405
+AZURE_SSL = True
+
+if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
+    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CAS_SERVER_URL = ''
 CAS_ADMIN_PREFIX = '/admin/'
