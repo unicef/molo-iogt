@@ -1,4 +1,4 @@
-from iogt.settings import *
+from iogt.settings import *  # noqa
 
 DATABASES = {
     'default': {
@@ -9,3 +9,7 @@ DATABASES = {
 
 DEBUG = True
 CELERY_ALWAYS_EAGER = True
+
+BROKER_URL = environ.get(
+    'BROKER_URL', 'amqp://rabbit:secret@rabbitmq.com:5672/molo-iogt'
+)

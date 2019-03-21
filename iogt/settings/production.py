@@ -1,10 +1,12 @@
-from .base import *
+from .base import *  # noqa
+from os import environ
 
 
 # Disable debug mode
 
 DEBUG = False
 TEMPLATE_DEBUG = False
+ENV = 'prd'
 
 
 # Compress static files offline
@@ -41,26 +43,23 @@ COMPRESS_OFFLINE = True
 #     }
 # }
 
-# Setup for CAS
-ENABLE_SSO = True
+# django-storages for AZURE
+AZURE_ACCOUNT_NAME = environ.get('AZURE_ACCOUNT_NAME', None)  # noqa: F405
+AZURE_ACCOUNT_KEY = environ.get('AZURE_ACCOUNT_KEY', None)  # noqa: F405
+AZURE_CONTAINER = environ.get('AZURE_CONTAINER', None)  # noqa: F405
 
-MIDDLEWARE_CLASSES += (
-    'molo.core.middleware.MoloCASMiddleware',
-    'molo.core.middleware.Custom403Middleware',
-)
+if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
+    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'molo.core.backends.MoloCASBackend',
-)
+COMPRESS_OFFLINE_CONTEXT = {
+    'STATIC_URL': STATIC_URL,
+    'ENV': ENV,
+}
 
-CAS_SERVER_URL = ''
-CAS_ADMIN_PREFIX = '/admin/'
-LOGIN_URL = '/accounts/login/'
-CAS_VERSION = '3'
+HTTPS_PATHS = ['admin', 'profiles/register/', 'profiles/login/']
 
 try:
-    from .local import *
+    from .local import *  # noqa
 except ImportError:
     pass

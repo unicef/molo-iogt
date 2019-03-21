@@ -1,13 +1,11 @@
-
 {% extends "base.html" %}
 
-{% load static core_tags %}
-
-{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+{% load static core_tags molo_survey_tags poll_votings%}
 
 {% block content %}
-    {% homepages %}
-    {% latest_listing_homepage num_count=10 %}
+    {% bannerpages %}
+    {% latest_listing_homepage %}
     {% section_listing_homepage %}
+    {% poll_page %}
+    {% surveys_list %}
 {% endblock %}
-

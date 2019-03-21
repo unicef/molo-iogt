@@ -1,0 +1,18 @@
+.footer {
+  background: #f0f0f0;
+  border-top: 2px solid #07292F;
+  .menu-list__item {
+    padding: 7px 15px;
+    .footer-link {
+      color: $tiber;
+      display: block;
+      font-size: $font-small;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: underline;
+    }
+  }
+}
+.footer-link--no-image-upload {
+  padding: 5px 0;
+}

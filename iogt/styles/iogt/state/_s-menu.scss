@@ -1,0 +1,44 @@
+.logo {
+  display: inline;
+  img {
+    margin-bottom: 0;
+  }
+}
+.menu-list__item {
+  position: relative;
+  a, .footer-links {
+    display: block;
+    text-decoration: none;
+    &:after {
+      display: inline-block;
+      float: right;
+      @media only screen and (min-width: 320px) {
+        content: ">";
+      }
+      @media only screen and (min-width: 490px) {
+        content: "❯";
+      }
+    }
+  }
+}
+@media only screen and (min-width: 320px) {
+  .header__nav-item {
+    text-decoration: none;
+    padding: 0 0 0 10px;
+  }
+  .menu-links {
+    display: inline-block;
+    text-align: right;
+    width: 58%;
+    }
+}
+.menu-list__item--icon {
+  display: inline-block;
+  padding-right: 5px;
+}
+@each $name, $color in $color_list {
+  .menu-list__item--#{$name} {
+    &:after { color: $color; }
+    a { color: $color; }
+  }
+}

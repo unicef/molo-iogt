@@ -1,5 +1,5 @@
 pytest
 pytest-django
+responses
 pytest-cov
-pytest-xdist
 flake8

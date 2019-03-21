@@ -1,0 +1,6 @@
+Sitemap: {{request.get_host}}/sitemap.xml
+User-agent: *
+Disallow: /admin/
+Disallow: /django-admin/
+Disallow: /health/
+Disallow: /health_iogt/

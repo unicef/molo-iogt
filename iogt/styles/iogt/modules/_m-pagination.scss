@@ -1,0 +1,32 @@
+.pagination {
+  padding: 5px 0px 30px;
+  overflow: auto;
+  &__current {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  &__previous-anchor,
+  &__next-anchor {
+    display: inline-block;
+  }
+
+  &__link {
+    color: #60599C;
+    font-size: $font-x-small;
+    font-weight: bold;
+    display: block;
+    text-transform: uppercase;
+    padding: 15px 0;
+    &--arrow {
+      display: none;
+    }
+  }
+  &--numbered {
+    position: relative;
+  }
+  &__pages-numbers {
+    display: inline-block;
+    a {color: #757575;}
+  }
+}
