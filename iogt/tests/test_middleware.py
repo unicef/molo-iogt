@@ -224,7 +224,12 @@ class TestFaceBookPixelHistoryCounter(TestCase, MoloTestCaseMixin):
         self.english_section = self.mk_section(
             self.section_index, title='English section')
 
-    def test_more_that_3_page_views(self):
+    @override_settings(
+        MIDDLEWARE_CLASSES={
+            "append": 'iogt.middleware.FaceBookPixelHistoryCounter',
+        }
+    )
+    def test_more_than_3_page_views(self):
         """ test if the no script html tag exists """
         view_count = 5
         self.client.cookies.load(
@@ -238,7 +243,12 @@ class TestFaceBookPixelHistoryCounter(TestCase, MoloTestCaseMixin):
             view_count + 1
         )
 
-    def test_less_that_3_page_views(self):
+    @override_settings(
+        MIDDLEWARE_CLASSES={
+            "append": 'iogt.middleware.FaceBookPixelHistoryCounter',
+        }
+    )
+    def test_less_than_3_page_views(self):
         """ test if the no script html tag exists """
         response = self.client.get(reverse('search'))
         self.assertEqual(
