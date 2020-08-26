@@ -31,7 +31,7 @@ def override_get_today():
 
 class TestMiddlewareUtils(TestCase):
     def test_clean_path(self):
-        self.assertEqual(clean_path(u'/'), [u'/'])
+        self.assertEqual(clean_path('/'), ['/'])
         self.assertEqual(clean_path('/admin'), ['admin'])
         self.assertEqual(clean_path('/admin/'), ['admin'])
         self.assertEqual(clean_path('admin/'), ['admin'])
