@@ -88,6 +88,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtailsurveys',
     'wagtail.contrib.wagtailsitemaps',
+    'wagtailschemaorg',
 
     'mptt',
     'raven.contrib.django.raven_compat',
@@ -472,10 +473,10 @@ EXTRA_LANG_INFO = {
         'name_local': 'دری,'
     },
     'ch': {
-          'bidi': False,
-          'code': 'ch',
-          'name': 'Chichewa',
-          'name_local': 'Chichewa'
+        'bidi': False,
+        'code': 'ch',
+        'name': 'Chichewa',
+        'name_local': 'Chichewa'
     },
     'sho': {
         'bidi': False,
