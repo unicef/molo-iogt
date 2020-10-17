@@ -15,11 +15,11 @@ def clean_path(path):
     '''
     Converts string of URL paths to list of path elements
     '''
-    if path == u'/':
-        return [u'/']
+    if path == '/':
+        return ['/']
     else:
         return [segment for segment
-                in path.split(u'/') if segment]
+                in path.split('/') if segment]
 
 
 def clean_paths(paths):
